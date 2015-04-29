@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/tentacles_1" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_2" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_3" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_4" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_5" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_6" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_7" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_8" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_9" android:duration="50"/>
+    <item android:drawable="@drawable/tentacles_10" android:duration="50"/>
+</animation-list>
