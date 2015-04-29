@@ -53,7 +53,7 @@ public class BackGround implements Runnable {
     @Override
     public void run() {
         Paint paint = new Paint();
-        paint.setAlpha(100);
+        paint.setAlpha(150);
         running = true;
         List<Position> positions = new ArrayList<Position>();
         for (int i = 0; i < 12; i++) {

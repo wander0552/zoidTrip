@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
         initBackground();
         initGame();
         initShow();
@@ -68,7 +69,7 @@ public class MainActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
-                holder.setFormat(PixelFormat.TRANSPARENT);
+  /*              holder.setFormat(PixelFormat.TRANSPARENT);
                 Canvas canvas = holder.lockCanvas();
                 canvas.drawColor(Color.argb(50, 255, 0, 0));
                 canvas.save();
@@ -79,8 +80,9 @@ public class MainActivity extends Activity {
                 canvas.drawText("高分",300,300, paint);
                 canvas.drawBitmap(bitmap,300,700,paint);
                 canvas.restore();
-
-                holder.unlockCanvasAndPost(canvas);
+                holder.unlockCanvasAndPost(canvas);*/
+                holder.setFormat(PixelFormat.TRANSPARENT);
+                gameDraw=new GameDraw(holder,MainActivity.this);
             }
 
             @Override

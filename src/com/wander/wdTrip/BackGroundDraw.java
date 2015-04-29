@@ -17,7 +17,6 @@ public class BackGroundDraw {
     private int flag;
     BackGround particles1;
 
-
     public BackGroundDraw(SurfaceHolder holder, Context context) {
         this.holder = holder;
         this.context = context;
