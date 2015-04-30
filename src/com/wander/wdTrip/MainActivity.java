@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.*;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -39,12 +40,14 @@ public class MainActivity extends Activity {
 
     }
 
+    //用于显示障碍物和结果以及菜单界面
     private void initShow() {
-        sf_show= (SurfaceView) findViewById(R.id.surfaceView_show);
+        sf_show = (SurfaceView) findViewById(R.id.surfaceView_show);
         showHolder = sf_game.getHolder();
         showHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
+                Log.d("show_surface", holder.toString());
 
             }
 
@@ -55,6 +58,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
+                Log.d("show", holder.toString());
 
             }
         });
@@ -62,36 +66,30 @@ public class MainActivity extends Activity {
     }
 
     void initGame() {
-        sf_game = (SurfaceView) findViewById(R.id.surfaceView_game);
+        sf_game = (SurfaceView) findViewById(R.id.surfaceView_game);//1
         sf_game.setZOrderOnTop(true);
         gameHolder = sf_game.getHolder();
         gameHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
-  /*              holder.setFormat(PixelFormat.TRANSPARENT);
-                Canvas canvas = holder.lockCanvas();
-                canvas.drawColor(Color.argb(50, 255, 0, 0));
-                canvas.save();
-                Paint paint = new Paint();
-                BitmapFactory.Options opts = new BitmapFactory.Options();
-                opts.inSampleSize=3;
-                Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.face,opts);
-                canvas.drawText("高分",300,300, paint);
-                canvas.drawBitmap(bitmap,300,700,paint);
-                canvas.restore();
-                holder.unlockCanvasAndPost(canvas);*/
                 holder.setFormat(PixelFormat.TRANSPARENT);
-                gameDraw=new GameDraw(holder,MainActivity.this);
+                gameDraw = new GameDraw(holder, MainActivity.this);//1
+                Log.d("surfaceGame---create", holder.toString() + "gameDraw" + gameDraw.toString());
             }
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
             }
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
+                Log.d("game_surface", "destroy");
+                if (gameDraw != null) {
+                    Log.d("game_surface", "destroy" + gameDraw.toString());
+                    gameDraw.stopGame();
+                    gameDraw = null;
+                }
 
             }
         });
@@ -104,6 +102,7 @@ public class MainActivity extends Activity {
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
+                Log.d("back_create", holder.toString());
                 backGroundDraw = new BackGroundDraw(holder, MainActivity.this);
             }
 
@@ -115,6 +114,7 @@ public class MainActivity extends Activity {
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
 
+                Log.d("back_--destroy", holder.toString());
             }
         });
     }

@@ -13,11 +13,20 @@ public class GameDraw {
     private SurfaceHolder holder;
     private Context context;
     private Plankter plankter;
+    private static Thread pk;
 
     public GameDraw(SurfaceHolder holder, Context context) {
         this.holder = holder;
         this.context = context;
         plankter=new Plankter(context,holder);
-        new Thread(plankter).start();
+        if (pk==null) {
+            pk = new Thread(plankter);
+            pk.start();
+        }
     }
+
+    void stopGame(){
+        plankter.exitThread();
+    }
+
 }
